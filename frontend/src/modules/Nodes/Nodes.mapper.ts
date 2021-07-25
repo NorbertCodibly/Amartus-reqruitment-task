@@ -1,5 +1,5 @@
-import { INodeDto } from '~/shared/dto';
-import { INode } from '~/shared/types';
+import { INodeDto } from '../../shared/dto';
+import { INode } from '../../shared/types';
 
 // const nodes = [
 //   { id: 1, name: 'my node', pid: 2 },
