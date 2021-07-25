@@ -4,11 +4,13 @@ import { ACTION_TYPES } from './types';
 interface IState {
   items: INode[];
   hasBeenModified: boolean;
+  selectedNodeId: number | null;
 }
 
 const initialState: IState = {
   items: [],
   hasBeenModified: false,
+  selectedNodeId: null,
 };
 
 const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) => {
@@ -16,7 +18,12 @@ const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) 
     case ACTION_TYPES.GET_NODES:
       return {
         ...state,
-        items: action.payload.nodes,
+        items: action.payload.nodes as INode[],
+      };
+    case ACTION_TYPES.CHECK_NODE:
+      return {
+        ...state,
+        selectedNodeId: action.payload.selectedNodeId,
       };
     case ACTION_TYPES.ADD_NODE:
       return state;

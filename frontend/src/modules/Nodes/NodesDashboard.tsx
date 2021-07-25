@@ -1,6 +1,11 @@
 import React, { memo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NodesActions } from './Nodes.actions';
+import Button from '~/components/Button';
+import ButtonsContainer from './ButtonsContainer';
+import SaveIcon from '@material-ui/icons/Save';
+import NodesList from './NodesList';
+import { StyledWrapper } from './NodesDashboard.styles';
 
 interface IProps {}
 
@@ -12,13 +17,13 @@ const NodesDashboard = ({}: IProps) => {
   }, []);
 
   return (
-    <div>
-      <button>Add</button>
-      <button>Update</button>
-      <button>Delete</button>
-      <div>Content</div>
-      <button onClick={() => dispatch(NodesActions.saveNodes())}>Save</button>
-    </div>
+    <StyledWrapper>
+      <ButtonsContainer />
+      <NodesList />
+      <Button color="primary" startIcon={<SaveIcon />}>
+        Add
+      </Button>
+    </StyledWrapper>
   );
 };
 

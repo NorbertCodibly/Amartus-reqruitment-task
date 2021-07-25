@@ -25,4 +25,21 @@ export class NodesActions {
       return NodesService.saveNodes(items);
     };
   }
+
+  static selectNode(nodeId: number) {
+    return (dispatch: DispatchType, getState: GetStateType) => {
+      const {
+        nodes: { selectedNodeId },
+      } = getState();
+
+      const unselectNode = selectedNodeId === nodeId;
+
+      return dispatch({
+        type: ACTION_TYPES.CHECK_NODE,
+        payload: {
+          selectedNodeId: unselectNode ? null : nodeId,
+        },
+      });
+    };
+  }
 }

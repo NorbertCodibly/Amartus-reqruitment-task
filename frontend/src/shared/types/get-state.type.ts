@@ -1,3 +1,3 @@
-import store from '~/store';
+import { RootStateType } from './root-state.type';
 
-export type GetStateType = () => ReturnType<typeof store.getState>;
+export type GetStateType = () => RootStateType;
