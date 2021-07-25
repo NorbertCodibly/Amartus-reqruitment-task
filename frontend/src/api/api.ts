@@ -7,7 +7,10 @@ export const http = axios.create(API_CONFIG);
 
 const api = {
   fetchNodes: () => http.get<INodeDto[]>(API_ROUTES.nodes),
-  saveNodes: (nodes: INodeDto[]) => http.put(API_ROUTES.nodes, nodes),
+  saveNodes: (nodes: INodeDto[]) =>
+    http.put(API_ROUTES.nodes, {
+      nodes,
+    }),
 };
 
 export default api;

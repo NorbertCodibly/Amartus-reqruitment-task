@@ -1,5 +1,5 @@
-const loadJsonFile = require("load-json-file");
-const writeJsonFile = require("write-json-file");
+const loadJsonFile = require('load-json-file');
+const writeJsonFile = require('write-json-file');
 
 class JsonFileService {
   constructor(filePath) {
