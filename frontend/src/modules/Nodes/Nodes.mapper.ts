@@ -1,5 +1,5 @@
 import { INodeDto } from '~/shared/dto';
-import { INode } from '~/shared/types';
+import { INode, RootStateType } from '~/shared/types';
 
 // const nodes = [
 //   { id: 1, name: 'my node', pid: 2 },
@@ -56,7 +56,7 @@ export class NodesMapper {
     return nodesTree;
   };
 
-  static mapNodesToDto = (nodesTree: any[], nodeParentId: number = null): any[] => {
+  static mapNodesToDto = (nodesTree: INode[], nodeParentId: number = null): INodeDto[] => {
     return nodesTree.reduce((flattenedArr, node) => {
       const { id, children } = node;
       const currentNode = NodesMapper.mapNodeToDto(node, nodeParentId);
@@ -71,5 +71,9 @@ export class NodesMapper {
       name,
       pid: parentId,
     };
+  };
+
+  static mapStateToSelectedNodeId = (state: RootStateType) => {
+    return state.nodes.selectedNodeId;
   };
 }

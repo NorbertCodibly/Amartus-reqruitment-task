@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootStateType } from '~/shared/types';
+import { NodesMapper } from '../Nodes.mapper';
 import { NodesActions } from '../Nodes.actions';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 const NodeCheckbox = ({ nodeId }: IProps) => {
   const dispatch = useDispatch();
-  const isChecked = useSelector((store: RootStateType) => store.nodes.selectedNodeId === nodeId);
+  const isChecked = useSelector(NodesMapper.mapStateToSelectedNodeId) === nodeId;
 
   const handleChange = () => {
     dispatch(NodesActions.selectNode(nodeId));

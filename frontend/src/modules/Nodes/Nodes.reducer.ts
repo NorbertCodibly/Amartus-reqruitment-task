@@ -1,8 +1,10 @@
 import { INode, TReduxAction } from '~/shared/types';
+import { NodesUtils } from './Nodes.utils';
 import { ACTION_TYPES } from './types';
 
 interface IState {
   items: INode[];
+  // TODO Norbert -> zmienić nazwę pola na bardziej przejrzystą
   hasBeenModified: boolean;
   selectedNodeId: number | null;
 }
@@ -20,19 +22,45 @@ const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) 
         ...state,
         items: action.payload.nodes as INode[],
       };
+
     case ACTION_TYPES.CHECK_NODE:
       return {
         ...state,
         selectedNodeId: action.payload.selectedNodeId,
       };
+
     case ACTION_TYPES.ADD_NODE:
-      return state;
+      const { node, parentId } = action.payload;
+      return {
+        ...state,
+        items: NodesUtils.insertNode(state.items, node, parentId),
+        hasBeenModified: true,
+      };
+
     case ACTION_TYPES.UPDATE_NODE:
-      return state;
+      // @ts-ignore
+      const { nodeId, updatedName } = action.payload;
+      return {
+        ...state,
+        items: NodesUtils.updateNode(state.items, nodeId, updatedName),
+        hasBeenModified: true,
+      };
+
     case ACTION_TYPES.DELETE_NODE:
-      return state;
+      // @ts-ignore
+      const { nodeId } = action.payload;
+      return {
+        ...state,
+        items: NodesUtils.removeNode(state.items, nodeId),
+        hasBeenModified: true,
+      };
+
     case ACTION_TYPES.SAVE_NODES:
-      return state;
+      return {
+        ...state,
+        hasBeenModified: false,
+      };
+
     default:
       return state;
   }

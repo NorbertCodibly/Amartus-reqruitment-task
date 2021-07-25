@@ -23,7 +23,7 @@ const NodesDashboard = ({}: IProps) => {
       <ButtonsContainer />
       <NodesList />
       <Button color="primary" startIcon={<SaveIcon />} disabled={!canSaveChanges}>
-        Add
+        Save
       </Button>
     </StyledWrapper>
   );
