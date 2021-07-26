@@ -42,7 +42,7 @@ export class NodesUtils {
 
   static removeNode(nodes: INode[], nodeId: number): INode[] {
     const nodesCopy = cloneDeep(nodes);
-    console.log(NodesUtils.removeNodeChildren(nodesCopy, nodeId));
+    NodesUtils.removeNodeChildren(nodesCopy, nodeId);
     return nodesCopy;
   }
 
