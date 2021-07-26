@@ -24,7 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: 'ts-loader',
+        loader: 'babel-loader',
       },
       {
         enforce: 'pre',

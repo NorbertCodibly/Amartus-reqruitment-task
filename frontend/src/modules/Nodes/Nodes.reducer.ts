@@ -1,6 +1,6 @@
 import { INode, TReduxAction } from '~/shared/types';
 import { NodesUtils } from './Nodes.utils';
-import { ACTION_TYPES } from './types';
+import { ACTION_TYPES } from './Nodes.consts';
 
 interface IState {
   items: INode[];
@@ -14,7 +14,7 @@ const initialState: IState = {
   selectedNodeId: null,
 };
 
-const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) => {
+const nodesReducer = (state = initialState, action: TReduxAction<keyof typeof ACTION_TYPES>) => {
   switch (action.type) {
     case ACTION_TYPES.GET_NODES:
       const { nodes } = action.payload;
@@ -40,7 +40,6 @@ const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) 
       };
 
     case ACTION_TYPES.UPDATE_NODE:
-      // @ts-ignore
       const { nodeId, updatedName } = action.payload;
       return {
         ...state,
@@ -49,11 +48,10 @@ const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) 
       };
 
     case ACTION_TYPES.DELETE_NODE:
-      // @ts-ignore
-      const { nodeId } = action.payload;
+      const { nodeId: deleteNodeId } = action.payload;
       return {
         ...state,
-        items: NodesUtils.removeNode(state.items, nodeId),
+        items: NodesUtils.removeNode(state.items, deleteNodeId),
         hasBeenModified: true,
         selectedNodeId: null,
       };

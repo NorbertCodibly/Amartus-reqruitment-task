@@ -1,1 +1,9 @@
 export const DEFAULT_NODE_NAME = 'Fantastic node';
+export const ACTION_TYPES = {
+  GET_NODES: 'GET_NODES',
+  SAVE_NODES: 'SAVE_NODES',
+  DELETE_NODE: 'DELETE_NODE',
+  UPDATE_NODE: 'UPDATE_NODE',
+  ADD_NODE: 'ADD_NODE',
+  CHECK_NODE: 'CHECK_NODE',
+};
