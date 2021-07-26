@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import SaveIcon from '@material-ui/icons/Save';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootStateType } from '~/shared/types';
 import Button from '~/components/Button';
+import { RootStateType } from '~/shared/types';
 import { NodesActions } from './Nodes.actions';
 
 const SaveButton = () => {

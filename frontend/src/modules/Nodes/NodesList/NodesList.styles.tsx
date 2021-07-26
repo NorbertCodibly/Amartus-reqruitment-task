@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { autoScrollableFlexItem } from '~/utils';
+import { autoVerticallyScrollableFlexItem } from '~/utils';
 
 export const StyledWrapper = styled.div`
   width: 100%;
@@ -9,5 +9,5 @@ export const StyledWrapper = styled.div`
   box-shadow: rgba(100, 100, 111, 0.25) 0px 5px 29px 0px;
   max-width: 100%;
 
-  ${autoScrollableFlexItem};
+  ${autoVerticallyScrollableFlexItem};
 `;

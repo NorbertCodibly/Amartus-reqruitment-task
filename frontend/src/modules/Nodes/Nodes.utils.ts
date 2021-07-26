@@ -1,8 +1,6 @@
 import { INode } from '~/shared/types';
 import { NodesMapper } from './Nodes.mapper';
 import { DEFAULT_NODE_NAME } from './Nodes.consts';
-import { INodeDto } from '~/shared/dto';
-import { getArrayWithUniqueValues } from '~/utils';
 import cloneDeep from 'lodash/cloneDeep';
 
 export class NodesUtils {
