@@ -4,7 +4,6 @@ import { ACTION_TYPES } from './types';
 
 interface IState {
   items: INode[];
-  // TODO Norbert -> zmienić nazwę pola na bardziej przejrzystą
   hasBeenModified: boolean;
   selectedNodeId: number | null;
 }
@@ -18,19 +17,22 @@ const initialState: IState = {
 const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) => {
   switch (action.type) {
     case ACTION_TYPES.GET_NODES:
+      const { nodes } = action.payload;
       return {
         ...state,
-        items: action.payload.nodes as INode[],
+        items: nodes as INode[],
       };
 
     case ACTION_TYPES.CHECK_NODE:
+      const { selectedNodeId } = action.payload;
       return {
         ...state,
-        selectedNodeId: action.payload.selectedNodeId,
+        selectedNodeId,
       };
 
     case ACTION_TYPES.ADD_NODE:
       const { node, parentId } = action.payload;
+
       return {
         ...state,
         items: NodesUtils.insertNode(state.items, node, parentId),
@@ -53,6 +55,7 @@ const nodesReducer = (state = initialState, action: TReduxAction<ACTION_TYPES>) 
         ...state,
         items: NodesUtils.removeNode(state.items, nodeId),
         hasBeenModified: true,
+        selectedNodeId: null,
       };
 
     case ACTION_TYPES.SAVE_NODES:

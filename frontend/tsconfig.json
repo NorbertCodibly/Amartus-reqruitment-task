@@ -9,10 +9,11 @@
     "sourceMap": true,
     "target": "es5",
     "esModuleInterop": true,
+    "downlevelIteration": true,
     "baseUrl": "./",
     "paths": {
       "~/*": ["src/*"]
-    }
+    },
   },
   "include": ["./src/index.tsx"]
 }
