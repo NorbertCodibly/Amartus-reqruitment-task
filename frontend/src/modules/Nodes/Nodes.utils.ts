@@ -25,24 +25,29 @@ export class NodesUtils {
     return NodesMapper.mapDtoToNodes(flattenedNodesList);
   }
 
-  static removeNodeChildren(nodes: INode[], nodeId: number, parentNode?: INode): void {
+  // TODO Norbert -> popracować nad nazwą
+  static removeNodeStructure(nodes: INode[], nodeId: number): void {
+    const childIndex = nodes.findIndex(node => node.id === nodeId);
+    nodes.splice(childIndex, 1);
+  }
+
+  static removeNodeChild(nodes: INode[], nodeId: number, parentNode?: INode): void {
     for (const node of nodes) {
       const isSearchedNode = node.id === nodeId;
       const isRootNode = !parentNode;
 
       if (isSearchedNode) {
-        if (isRootNode) nodes = nodes.filter(a => a.id !== nodeId);
-        else parentNode.children = parentNode.children.filter(a => a.id !== nodeId);
-        return;
+        const listContainingSearchedNode = isRootNode ? nodes : parentNode.children;
+        return NodesUtils.removeNodeStructure(listContainingSearchedNode, nodeId);
       }
 
-      NodesUtils.removeNodeChildren(node.children, nodeId, node);
+      NodesUtils.removeNodeChild(node.children, nodeId, node);
     }
   }
 
   static removeNode(nodes: INode[], nodeId: number): INode[] {
     const nodesCopy = cloneDeep(nodes);
-    NodesUtils.removeNodeChildren(nodesCopy, nodeId);
+    NodesUtils.removeNodeChild(nodesCopy, nodeId);
     return nodesCopy;
   }
 
