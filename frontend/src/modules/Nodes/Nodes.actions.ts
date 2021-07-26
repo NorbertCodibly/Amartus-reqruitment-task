@@ -24,7 +24,12 @@ export class NodesActions {
         nodes: { items },
       } = getState();
 
-      return NodesService.saveNodes(items);
+      return NodesService.saveNodes(items).then(() =>
+        dispatch({
+          type: ACTION_TYPES.SAVE_NODES,
+          payload: {},
+        })
+      );
     };
   }
 
