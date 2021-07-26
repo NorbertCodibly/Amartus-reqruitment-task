@@ -5,7 +5,7 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   &:hover {

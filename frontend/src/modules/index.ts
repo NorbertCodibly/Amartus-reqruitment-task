@@ -1,1 +1,1 @@
-export { default as NodesDashboard } from './Nodes';
+export { default as NodesModule } from './Nodes';

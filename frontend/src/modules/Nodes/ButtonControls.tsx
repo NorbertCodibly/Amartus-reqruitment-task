@@ -11,7 +11,7 @@ import { NodesActions } from './Nodes.actions';
 
 interface IProps {}
 
-const ButtonsContainer = ({}: IProps) => {
+const ButtonsGroup = ({}: IProps) => {
   const dispatch = useDispatch();
   const canPerformActionOnNode = useSelector(
     (state: RootStateType) => state.nodes.selectedNodeId !== null
@@ -34,18 +34,18 @@ const ButtonsContainer = ({}: IProps) => {
   };
 
   return (
-      <ButtonGroup variant="contained" disabled={!canPerformActionOnNode}>
-        <Button color="primary" startIcon={<AddIcon />} onClick={handleAddNode}>
-          Add
-        </Button>
-        <Button color="primary" startIcon={<UpdateIcon />} onClick={handleUpdateNode}>
-          Update
-        </Button>
-        <Button color="secondary" startIcon={<DeleteIcon />} onClick={handleDeleteNode}>
-          Delete
-        </Button>
-      </ButtonGroup>
+    <ButtonGroup variant="contained" disabled={!canPerformActionOnNode}>
+      <Button color="primary" startIcon={<AddIcon />} onClick={handleAddNode}>
+        Add
+      </Button>
+      <Button color="primary" startIcon={<UpdateIcon />} onClick={handleUpdateNode}>
+        Update
+      </Button>
+      <Button color="secondary" startIcon={<DeleteIcon />} onClick={handleDeleteNode}>
+        Delete
+      </Button>
+    </ButtonGroup>
   );
 };
 
-export default memo(ButtonsContainer);
+export default memo(ButtonsGroup);
