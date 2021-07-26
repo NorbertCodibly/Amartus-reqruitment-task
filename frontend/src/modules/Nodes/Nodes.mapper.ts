@@ -3,16 +3,16 @@ import { INode, RootStateType } from '~/shared/types';
 
 export class NodesMapper {
   static mapDtoToNodes = (flattenNodes: INodeDto[]): INode[] => {
-    const hashTable = Object.create(null);
+    const nodesHashTable = Object.create(null);
     const nodesTree: INode[] = [];
 
-    flattenNodes.forEach(node => (hashTable[node.id] = { ...node, children: [] }));
+    flattenNodes.forEach(node => (nodesHashTable[node.id] = { ...node, children: [] }));
     flattenNodes.forEach(node => {
-      const { pid, ...nodeWithStructure } = hashTable[node.id];
+      const { pid, ...nodeWithStructure } = nodesHashTable[node.id];
       const nodeHasRoot = node.pid;
 
       nodeHasRoot
-        ? hashTable[node.pid].children.push(nodeWithStructure)
+        ? nodesHashTable[node.pid].children.push(nodeWithStructure)
         : nodesTree.push(nodeWithStructure);
     });
 
