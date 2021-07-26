@@ -5,6 +5,7 @@ import Button from '~/components/Button';
 import ButtonsContainer from './ButtonsContainer';
 import SaveIcon from '@material-ui/icons/Save';
 import NodesList from './NodesList';
+import Flex from '~/components/Flex';
 import { RootStateType } from '~/shared/types';
 import { StyledWrapper } from './NodesDashboard.styles';
 
@@ -24,11 +25,11 @@ const NodesDashboard = ({}: IProps) => {
 
   return (
     <StyledWrapper>
-      <ButtonsContainer />
-      <NodesList />
-      <Button color="primary" startIcon={<SaveIcon />} disabled={!canSaveChanges} onClick={handleSaveNodes}>
-        Save
-      </Button>
+        <ButtonsContainer />
+        <NodesList />
+        <Button color="primary" startIcon={<SaveIcon />} disabled={!canSaveChanges} onClick={handleSaveNodes}>
+          Save
+        </Button>
     </StyledWrapper>
   );
 };

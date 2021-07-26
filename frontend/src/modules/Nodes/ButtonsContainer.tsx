@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
-import Button from '~/components/Button';
+import { useDispatch, useSelector } from 'react-redux';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import AddIcon from '@material-ui/icons/Add';
 import UpdateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useDispatch, useSelector } from 'react-redux';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '~/components/Button';
+import { isNotEmptyString } from '~/utils';
 import { RootStateType } from '~/shared/types';
 import { NodesActions } from './Nodes.actions';
-import { isNotEmptyString } from '~/utils';
 
 interface IProps {}
 
@@ -26,6 +26,7 @@ const ButtonsContainer = ({}: IProps) => {
   };
 
   const handleUpdateNode = () => {
+    // TODO Norbert -> dodać Dialog -> https://material-ui.com/components/dialogs/
     const nodeName = window.prompt('Insert a new name for the node');
     if (isNotEmptyString(nodeName)) {
       dispatch(NodesActions.updateNode(nodeName));
@@ -33,17 +34,17 @@ const ButtonsContainer = ({}: IProps) => {
   };
 
   return (
-    <ButtonGroup variant="contained" disabled={!canPerformActionOnNode}>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleAddNode}>
-        Add
-      </Button>
-      <Button color="secondary" startIcon={<UpdateIcon />} onClick={handleUpdateNode}>
-        Update
-      </Button>
-      <Button color="primary" startIcon={<DeleteIcon />} onClick={handleDeleteNode}>
-        Delete
-      </Button>
-    </ButtonGroup>
+      <ButtonGroup variant="contained" disabled={!canPerformActionOnNode}>
+        <Button color="primary" startIcon={<AddIcon />} onClick={handleAddNode}>
+          Add
+        </Button>
+        <Button color="primary" startIcon={<UpdateIcon />} onClick={handleUpdateNode}>
+          Update
+        </Button>
+        <Button color="secondary" startIcon={<DeleteIcon />} onClick={handleDeleteNode}>
+          Delete
+        </Button>
+      </ButtonGroup>
   );
 };
 

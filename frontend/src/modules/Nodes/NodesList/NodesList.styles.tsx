@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import { autoScrollableFlexItem } from '~/utils';
 
 export const StyledWrapper = styled.div`
-  margin: 1rem 0;
+  width: 100%;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
   border-radius: 12px;
-  box-shadow: 0 2px 10px 0 #23232377;
+  box-shadow: rgba(100, 100, 111, 0.25) 0px 5px 29px 0px;
+  max-width: 100%;
+
+  ${autoScrollableFlexItem};
 `;

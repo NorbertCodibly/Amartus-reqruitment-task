@@ -16,7 +16,7 @@ const NodeCheckbox = ({ nodeId }: IProps) => {
     dispatch(NodesActions.selectNode(nodeId));
   };
 
-  return <Checkbox onChange={handleChange} checked={isChecked} />;
+  return <Checkbox onChange={handleChange} checked={isChecked} color="primary" />;
 };
 
 export default memo(NodeCheckbox);
