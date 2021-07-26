@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootStateType } from '~/shared/types';
 import { NodesActions } from './Nodes.actions';
+import { isNotEmptyString } from '~/utils';
 
 interface IProps {}
 
@@ -26,8 +27,7 @@ const ButtonsContainer = ({}: IProps) => {
 
   const handleUpdateNode = () => {
     const nodeName = window.prompt('Insert a new name for the node');
-    // TODO Norbert -> zrobić utilsa na empty stringa (z trimem)
-    if (nodeName) {
+    if (isNotEmptyString(nodeName)) {
       dispatch(NodesActions.updateNode(nodeName));
     }
   };
