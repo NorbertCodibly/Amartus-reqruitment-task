@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --port 3000 --mode development --open --hot",
+    "test": "jest",
     "build": "webpack --mode production"
   },
   "author": "Norbert Kruk",
@@ -28,6 +29,7 @@
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
+    "@types/babel__core": "^7.1.15",
     "@types/jest": "^26.0.24",
     "@types/lodash": "^4.14.171",
     "@types/qs": "^6.9.7",
@@ -41,7 +43,7 @@
     "directory-named-webpack-plugin": "^4.0.1",
     "dotenv": "^10.0.0",
     "html-webpack-plugin": "^5.3.2",
-    "jest-environment-jsdom-sixteen": "^2.0.0",
+    "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "sass": "^1.36.0",
     "sass-loader": "^12.1.0",
