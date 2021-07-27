@@ -12,10 +12,19 @@ So make sure, that you're running the `backend` side of the application, while r
 
 Example commands to run both sides of the application (from the `frontend` directory) may look like:
 
-```
+```bash
 cd ../backend && yarn start
 yarn start
 ```
+
+## Running the application for the first time
+
+If you are running the application for the first time, then you'll have to install all the project dependencies.
+
+You can do so with one of the commands:
+
+- `yarn install`
+- `npm install`
 
 ## App environment variables
 
@@ -23,4 +32,5 @@ All env variables should be declared inside the `.env` file.
 List of the currently supported environment variables:
 
 - `API_HOST`  
-  Determines the hostname address for the nodes API.
+  Determines the hostname address for the nodes API.  
+  From this address application will try to get the nodes data.
