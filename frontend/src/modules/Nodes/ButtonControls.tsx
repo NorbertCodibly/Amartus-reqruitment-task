@@ -5,7 +5,7 @@ import UpdateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '~/components/Button';
-import { isNotEmptyString } from '~/utils';
+import { isEmptyString } from '~/utils';
 import { RootStateType } from '~/shared/types';
 import { NodesActions } from './Nodes.actions';
 
@@ -28,7 +28,7 @@ const ButtonsGroup = ({}: IProps) => {
   const handleUpdateNode = () => {
     // TODO Norbert -> dodać Dialog -> https://material-ui.com/components/dialogs/
     const nodeName = window.prompt('Insert a new name for the node');
-    if (isNotEmptyString(nodeName)) {
+    if (!isEmptyString(nodeName)) {
       dispatch(NodesActions.updateNode(nodeName));
     }
   };

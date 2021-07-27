@@ -1,7 +1,6 @@
 import { INode } from '~/shared/types';
 import { NodesMapper } from './Nodes.mapper';
 import { DEFAULT_NODE_NAME } from './Nodes.consts';
-import cloneDeep from 'lodash/cloneDeep';
 
 export class NodesUtils {
   static getUniqueNodeId(nodes: INode[]): number {
