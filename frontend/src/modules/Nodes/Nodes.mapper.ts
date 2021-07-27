@@ -19,14 +19,6 @@ export class NodesMapper {
     return nodesTree;
   };
 
-  static mapNodesToDto = (nodesTree: INode[], nodeParentId: number = null): INodeDto[] => {
-    return nodesTree.reduce((flattenedArr, node) => {
-      const { id, children } = node;
-      const currentNode = NodesMapper.mapNodeToDto(node, nodeParentId);
-      return [...flattenedArr, currentNode, ...NodesMapper.mapNodesToDto(children, id)];
-    }, []);
-  };
-
   static mapNodeToDto = (node: INode, parentId: number): INodeDto => {
     const { id, name } = node;
     return {
@@ -34,6 +26,14 @@ export class NodesMapper {
       name,
       pid: parentId,
     };
+  };
+
+  static mapNodesToDto = (nodesTree: INode[], nodeParentId: number = null): INodeDto[] => {
+    return nodesTree.reduce((flattenedArr, node) => {
+      const { id, children } = node;
+      const currentNode = NodesMapper.mapNodeToDto(node, nodeParentId);
+      return [...flattenedArr, currentNode, ...NodesMapper.mapNodesToDto(children, id)];
+    }, []);
   };
 
   static mapStateToSelectedNodeId = (state: RootStateType) => {
