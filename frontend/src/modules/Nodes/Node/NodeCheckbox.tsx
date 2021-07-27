@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import { useSelector, useDispatch } from 'react-redux';
-import { NodesMapper } from '../Nodes.mapper';
+import { NodesMapper } from '../mapper';
 import { NodesActions } from '../Nodes.actions';
 
 interface IProps {
