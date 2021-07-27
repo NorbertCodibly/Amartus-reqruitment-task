@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
+import Typography from '@material-ui/core/Typography';
+import { INode } from '~/shared/types';
 import { StyledWrapper, StyledLabel, StyledChildrenWrapper } from './Node.styles';
 import NodeCheckbox from './NodeCheckbox';
-import { INode } from '~/shared/types';
 
 interface IProps extends INode {}
 
@@ -12,7 +13,7 @@ const Node = ({ id, name, children }: IProps) => {
     <StyledWrapper>
       <StyledLabel>
         <NodeCheckbox nodeId={id} />
-        {name}
+        <Typography>{name}</Typography>
       </StyledLabel>
 
       {hasChildNodes && (
