@@ -25,30 +25,17 @@ export class NodesUtils {
     return NodesMapper.mapDtoToNodes(flattenedNodesList);
   }
 
-  // TODO Norbert -> popracować nad nazwą
-  static removeNodeStructure(nodes: INode[], nodeId: number): void {
-    const childIndex = nodes.findIndex(node => node.id === nodeId);
-    nodes.splice(childIndex, 1);
-  }
+  static removeNode(nodes: INode[], nodeId: number): INode[] {
+    return nodes.filter(node => {
+      const isNotSearchedNode = node.id !== nodeId;
+      const hasChildren = node.children?.length;
 
-  static removeNodeChild(nodes: INode[], nodeId: number, parentNode?: INode): void {
-    for (const node of nodes) {
-      const isSearchedNode = node.id === nodeId;
-      const isRootNode = !parentNode;
-
-      if (isSearchedNode) {
-        const listContainingSearchedNode = isRootNode ? nodes : parentNode.children;
-        return NodesUtils.removeNodeStructure(listContainingSearchedNode, nodeId);
+      if (isNotSearchedNode && hasChildren) {
+        node.children = NodesUtils.removeNode(node.children, nodeId);
       }
 
-      NodesUtils.removeNodeChild(node.children, nodeId, node);
-    }
-  }
-
-  static removeNode(nodes: INode[], nodeId: number): INode[] {
-    const nodesCopy = cloneDeep(nodes);
-    NodesUtils.removeNodeChild(nodesCopy, nodeId);
-    return nodesCopy;
+      return isNotSearchedNode;
+    });
   }
 
   static updateNode(nodes: INode[], nodeId: number, updatedName: string) {
