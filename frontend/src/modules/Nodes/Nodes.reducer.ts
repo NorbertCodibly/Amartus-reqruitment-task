@@ -1,5 +1,5 @@
 import { INode, TReduxAction } from '~/shared/types';
-import { NodesUtils } from './Nodes.utils';
+import { NodesUtils } from './utils';
 import { ACTION_TYPES } from './Nodes.consts';
 
 interface IState {

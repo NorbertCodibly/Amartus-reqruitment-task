@@ -26,8 +26,8 @@ const ButtonsGroup = ({}: IProps) => {
   };
 
   const handleUpdateNode = () => {
-    // TODO Norbert -> dodać Dialog -> https://material-ui.com/components/dialogs/
     const nodeName = window.prompt('Insert a new name for the node');
+
     if (!isEmptyString(nodeName)) {
       dispatch(NodesActions.updateNode(nodeName));
     }

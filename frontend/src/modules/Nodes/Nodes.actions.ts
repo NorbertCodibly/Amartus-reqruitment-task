@@ -1,7 +1,7 @@
 import { DispatchType, GetStateType } from '~/shared/types';
 import { NodesService } from './Nodes.service';
-import { NodesMapper } from './Nodes.mapper';
-import { NodesUtils } from './Nodes.utils';
+import { NodesMapper } from './mapper';
+import { NodesUtils } from './utils';
 import { ACTION_TYPES } from './Nodes.consts';
 
 export class NodesActions {

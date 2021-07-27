@@ -1,7 +1,7 @@
 import { NodesMapper } from './Nodes.mapper';
-import { NodesMock } from './Nodes.mock';
-import { INode } from '../../shared/types';
-import { INodeDto } from '../../shared/dto';
+import { NodesMock } from '../Nodes.mock';
+import { INode } from '../../../shared/types';
+import { INodeDto } from '../../../shared/dto';
 
 const singleNode = NodesMock.nodes[0];
 const singleDtoNode = NodesMock.nodesDto[0];

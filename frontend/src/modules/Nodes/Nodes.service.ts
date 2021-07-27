@@ -1,6 +1,6 @@
 import api from '~/api';
 import { INode } from '~/shared/types';
-import { NodesMapper } from './Nodes.mapper';
+import { NodesMapper } from './mapper';
 
 export class NodesService {
   static getNodes() {
