@@ -20,7 +20,7 @@ const nodesReducer = (state = initialState, action: TReduxAction<keyof typeof AC
       const { nodes } = action.payload;
       return {
         ...state,
-        items: nodes as INode[],
+        items: nodes,
       };
 
     case ACTION_TYPES.CHECK_NODE:
