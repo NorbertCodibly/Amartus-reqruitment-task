@@ -38,3 +38,7 @@ You can do so with one of the commands (executed inside `backend`/`frontend` dir
 ## More documentation
 
 More documentation is available on the `frontend` and `backend` directories, when it's being stored inside the `README.md` file.
+
+## Additional informations
+
+In the project requirements there were no requirements related to the data validation and error handling, during communication between the `frontend` and `backend`, that's why this functionality has not been implemented.
