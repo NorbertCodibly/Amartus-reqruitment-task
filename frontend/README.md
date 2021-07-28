@@ -34,3 +34,10 @@ List of the currently supported environment variables:
 - `API_HOST`  
   Determines the hostname address for the nodes API.  
   From this address application will try to get the nodes data.
+
+## DTO
+
+`DTO` stands for Data Transfer Object and it's essentially concept that involves interface, that is being used during the communication with the API.  
+(when the data is being send to the endpoint and when it's being fetched)
+
+It helps with respecting the contract (eg. established between `frontend` and `backend`), by representing it in form of the interface, from which it can be mapped to the interal structure.
